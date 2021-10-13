@@ -26,11 +26,14 @@ import mana from "./img_dice/mtg_mana.jpg"
       dice.forEach(die => {
         toggleClasses(die);
         die.dataset.roll = getRandomNumber(1, 6);
-       
         setDiceSide(die.dataset.roll);
       });
     }
     console.log(diceSide);
+
+    if (diceSide == 1) {
+      console.log('Go to new Plane')
+    };
     return(
       <>
         <div className="dice">
