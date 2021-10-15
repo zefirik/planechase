@@ -1,15 +1,15 @@
 import axios from 'axios';
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 
 function PlaneCard () {
     
     const [dataCards, setDataCards] = useState([]);
     
-    function getData () {
+    async function getData() {
         let arrData=[];
         
         for(let i = 1; i <= 6; i++ ){
-        axios.get(`https://mtgify.app/api/card?page=${i}&search=&sets[]=237`)
+        await axios.get(`https://mtgify.app/api/card?page=${i}&search=&sets[]=237`)
         // eslint-disable-next-line no-loop-func
         .then(response => {
         arrData = [...response.data.data, ...arrData];
@@ -19,27 +19,34 @@ function PlaneCard () {
       })}
   };
   
+  useEffect(() => {
+    getData();
+  }, []);
 
  
-  //console.log("Output data: ",dataCards)
+      
   
+if(dataCards.length > 0){
     return(
         <>
         <br/>
-        <button onClick={getData}>getData</button>
+        {/* <button onClick={getData}>getData</button> */}
         <div>
-         <tbody>
-            {dataCards.map((item) => (
-             <tr key = {item.id}>
-                <td> - </td>
-                <td> <img src={item.image_url} alt={"logo"} className="img_plane"/></td>
-                <td>Name:{item.matched_names[0].name}</td>
-                <td>Type:{item.matched_names[0].type}</td>
-            </tr>))
-            }
-        </tbody>
+            <ul key = {dataCards[0].id} style={{listStyleType: "none"}}>
+                <li> <img src={dataCards[0].image_url} alt={"logo"} className="img_plane"/></li>
+                <li>Name:{dataCards[0].matched_names[0].name}</li>
+                <li>Type:{dataCards[0].matched_names[0].type}</li>
+                <li>Type:{dataCards[0].matched_names[0].text}</li>
+            </ul>
+      
         </div>
         </>
+    )}
+
+    return (
+        <div>
+            Somme problem
+        </div>
     )
 }
 

@@ -20,6 +20,7 @@ import mana from "./img_dice/mtg_mana.jpg"
 
   const DiceApp = () =>{
     const [diceSide,setDiceSide] = useState();
+    const [diceCount,setDiceCount] = useState(0);
     
     function rollDice() {
       const dice = [...document.querySelectorAll(".die-list")];
@@ -27,6 +28,8 @@ import mana from "./img_dice/mtg_mana.jpg"
         toggleClasses(die);
         die.dataset.roll = getRandomNumber(1, 6);
         setDiceSide(die.dataset.roll);
+        if(die.dataset.roll ==="1"){ return setDiceCount(0)} 
+        setDiceCount(diceCount + 1)
       });
     }
     console.log(diceSide, typeof(diceSide));
@@ -61,6 +64,7 @@ import mana from "./img_dice/mtg_mana.jpg"
     </div>
     <div>
       <button className="button_dice" onClick={rollDice}>Roll Dice</button>
+      <div>Dice count: {diceCount} mana</div>
     </div>
     </div>
     )

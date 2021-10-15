@@ -119,8 +119,11 @@
   }
 
   .img_plane {
+    display: flex;
+    justify-content: center;
+    margin-left: 10%;
     transform: rotate(90deg);
-    width: 50%;
+    width: 30%;
   }
   
   @media (min-width: 900px) {
