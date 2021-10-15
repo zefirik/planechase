@@ -1,12 +1,5 @@
-* {
-    margin: 0;
-    padding: 0;
-    vertical-align: baseline;
-  }
-  html {
-    font-family: system-ui, sans-serif;
-  }
-  body {
+
+  .body_dice {
     background: linear-gradient(#545454, #454545, #676767);
     display: grid;
   
@@ -111,7 +104,7 @@
   }
   
   
-  button {
+  .button_dice {
     align-self: center;
     background-color: #efefef;
     border: none;
@@ -121,8 +114,13 @@
     justify-self: center;
     padding: 0.5rem 1rem;
   }
-  button:hover {
+  .button_dice:hover {
     cursor: pointer;
+  }
+
+  .img_plane {
+    transform: rotate(90deg);
+    width: 50%;
   }
   
   @media (min-width: 900px) {

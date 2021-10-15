@@ -19,7 +19,7 @@ import mana from "./img_dice/mtg_mana.jpg"
  
 
   const DiceApp = () =>{
-    const [diceSide,setDiceSide] = useState(0);
+    const [diceSide,setDiceSide] = useState();
     
     function rollDice() {
       const dice = [...document.querySelectorAll(".die-list")];
@@ -29,13 +29,14 @@ import mana from "./img_dice/mtg_mana.jpg"
         setDiceSide(die.dataset.roll);
       });
     }
-    console.log(diceSide);
+    console.log(diceSide, typeof(diceSide));
+    
 
-    if (diceSide == 1) {
+    if (diceSide === "1") {
       console.log('Go to new Plane')
     };
     return(
-      <>
+      <div className="body_dice">
         <div className="dice">
       <ol className="die-list even-roll" data-roll="1" id="die-1">
         <li className="die-item" data-side="1">
@@ -59,9 +60,9 @@ import mana from "./img_dice/mtg_mana.jpg"
       </ol>
     </div>
     <div>
-      <button onClick={rollDice}>Roll Dice</button>
+      <button className="button_dice" onClick={rollDice}>Roll Dice</button>
     </div>
-    </>
+    </div>
     )
   }
 
