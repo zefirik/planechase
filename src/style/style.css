@@ -1,19 +1,15 @@
-
-  .body_dice {
+  .game_page {
+    display: flex;
     background: linear-gradient(#545454, #454545, #676767);
-    display: grid;
-  
-    height: 100vh;
-    overflow: hidden;
-    width: 100%;
   }
+
   .dice {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    display: grid;
-    grid-gap: 2rem;
-    justify-items: center;
     padding: 2rem;
     perspective: 600px;
+    margin: 8% 5%;
   }
   .die-list {
     display: grid;
@@ -93,37 +89,32 @@
   [data-side="6"] {
     transform: rotate3d(1, 0, 0, 180deg) translateZ(4rem);
   }
-
- 
-  [data-side="1"] .dot:nth-of-type(1) {
-    grid-area: five;
-  }
- 
-  [data-side="6"] .dot:nth-of-type(1) {
-    grid-area: five;
+  .dot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   
   
   .button_dice {
-    align-self: center;
     background-color: #efefef;
+    width: 250px;
+    height: 75px;
     border: none;
     color: #333;
     font-size: 1.25rem;
     font-weight: 700;
-    justify-self: center;
-    padding: 0.5rem 1rem;
+    margin: 3% 0;
   }
   .button_dice:hover {
     cursor: pointer;
   }
 
   .img_plane {
-    display: flex;
-    justify-content: center;
-    margin-left: 10%;
+    /* display: flex;
+    justify-content: center; */
     transform: rotate(90deg);
-    width: 30%;
+    width: 45%;
   }
   
   @media (min-width: 900px) {
@@ -132,3 +123,4 @@
     }
   }
   
+

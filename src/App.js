@@ -1,13 +1,13 @@
 import React from "react";
-import RollDice from "./components/dice/dice";
-import PlaneCard from "./components/planeCard/planeCard";
+import GamePage from "./components/gamePage/gamePage";
+
+import "./style/style.css";
 
 function App() {
   return (
     <div>
-      HI!
-      <RollDice/>
-      <PlaneCard/>   
+      {/* <button>start game</button> */}
+      <GamePage />
     </div>
   );
 }
