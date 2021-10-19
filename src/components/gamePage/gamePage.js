@@ -7,10 +7,14 @@ import {StoreContext} from '../../store/context'
 
 
 const GamePage = () => {
-  const [count, setCount] = useState(0); 
+  const [count, setCount] = useState(0);
+  const [sideDice, setSideDice] = useState(0);
+  const [diceRoll, setDiceRoll] = useState(0);
   
   return (
-    <StoreContext.Provider value={{count, setCount}}>
+    <StoreContext.Provider value={{count, setCount, 
+                                   sideDice, setSideDice, 
+                                   diceRoll, setDiceRoll}}>
     <div className="game_page">
       <RollDice/>
       <PlaneCard/>   

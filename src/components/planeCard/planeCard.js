@@ -3,11 +3,13 @@ import React, { useState, useEffect, useContext} from 'react';
 import {StoreContext} from '../../store/context'
 
 
-const PlaneCard = () => {
-    const [dataCards, setDataCards] = useState([]);
-    const {count, setCount} = useContext(StoreContext);
 
-    useEffect(() => {
+const PlaneCard = () => {
+    const {count, setCount, sideDice} = useContext(StoreContext);
+    const [dataCards, setDataCards] = useState([]);
+    let chaos = 0;
+
+        useEffect(() => {
         getData();
       }, []);
 
@@ -31,30 +33,37 @@ const PlaneCard = () => {
         console.log("Shuffled : ", shuffled);
   };
   
+  function chaosText(text){
+    const re = text.split("{CHAOS},");
+     return chaos = re[1];
+    };
 
+  if(sideDice === '4'){chaosText(dataCards[count].matched_names[0].text)}
+  console.log("Chaos state :",chaos);
   
 if(dataCards.length > 0){
     return(
         <>
-        {/* <span>{count}</span> */}
         <div className="dot">
         <img src={dataCards[count].image_url} alt={"logo"} className="img_plane"/>
-            {/* <ul key = {dataCards[i].id} style={{listStyleType: "none"}}>
-                <li> <img src={dataCards[i].image_url} alt={"logo"} className="img_plane"/></li>
+            {/*
                 <li>Name:{dataCards[i].matched_names[0].name}</li>
-                <li>Type:{dataCards[i].matched_names[0].type}</li>
-                <li>Text:{dataCards[i].matched_names[0].text}</li>
+>
             </ul> */}
             
         </div>
+        
        {(dataCards[count].matched_names[0].type === 'Phenomenon') ? <div> <button onClick = {()=> setCount(prev => prev + 1)}>Next</button></div> : null}
             
         <div>
-            <button onClick = {()=> setCount(prev => prev - 1)}>-</button>
+            {(count !== 0) ? <button onClick = {()=> setCount(prev => prev - 1)}>-</button> : null}
             <span>{count}</span>
             <button onClick = {()=> setCount(prev => prev + 1)}>+</button>
             
+            {(sideDice === '4' ) ? <div>{chaos}</div> : null}
+            
         </div>
+        
         </>
     )}
 

@@ -20,15 +20,15 @@ import {StoreContext} from '../../store/context'
  
 
   const DiceApp = () =>{
-    const {count, setCount} = useContext(StoreContext);
+    const {setCount, setSideDice, diceRoll, setDiceRoll} = useContext(StoreContext);
     
     function rollDice() {
       const dice = [...document.querySelectorAll(".die-list")];
       dice.forEach(die => {
         toggleClasses(die);
         die.dataset.roll = getRandomNumber(1, 6);
-   
-        console.log(die.dataset.roll);
+        setSideDice(die.dataset.roll);
+        setDiceRoll(prev => prev + 1);
         if (die.dataset.roll === "3") {
           setCount(prev => prev + 1);
           console.log('Next Plane')
@@ -37,8 +37,12 @@ import {StoreContext} from '../../store/context'
           console.log('Use Chaos')
         };
       });
-
     }
+
+    function nextMove(){
+      setDiceRoll(0)
+      setSideDice(0);
+    };
     
     
     
@@ -62,14 +66,13 @@ import {StoreContext} from '../../store/context'
         <li className="die-item" data-side="6"></li>
       </ol>
       </div>
+      
       <div className="dot">
+      <span>Next Roll: +{diceRoll}Mana</span>
         <button className="button_dice" onClick={rollDice}>Roll Dice</button>
+
+        <button className="button_dice" onClick={nextMove}>Next Move</button>
       </div>
-       <div>
-            <button onClick={()=> setCount(prev => prev - 1)}>-</button>
-            <span>{count}</span>
-            <button onClick={()=> setCount(prev => prev + 1)}>+</button>
-        </div> 
   </>
     )
   };
