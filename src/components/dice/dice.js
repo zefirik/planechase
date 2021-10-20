@@ -70,8 +70,7 @@ import {StoreContext} from '../../store/context'
       <div className="dot_dice">
         <div className="text_white">Next Roll: +{diceRoll} Mana</div>
           <button className="button_dice" onClick={rollDice}>Roll Dice</button>
-          <button className="button_dice" onClick={nextMove}>Next Turn</button>
-              <div style={{
+          <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -80,6 +79,8 @@ import {StoreContext} from '../../store/context'
                 {(count !== 0) ? <button className="button_click" onClick = {()=> setCount(prev => prev - 1)}>↶</button> : null}
                 <button className="button_click" onClick = {()=> setCount(prev => prev + 1)}>↷</button> 
               </div>   
+          <button className="button_dice" onClick={nextMove}>Next Turn</button>
+              
       </div>
   </>
     )
