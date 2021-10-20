@@ -5,7 +5,7 @@ import {StoreContext} from '../../store/context'
 
 
 const PlaneCard = () => {
-    const {count, setCount, sideDice} = useContext(StoreContext);
+    const {count, sideDice} = useContext(StoreContext);
     const [dataCards, setDataCards] = useState([]);
     let chaos = 0;
 
@@ -34,7 +34,7 @@ const PlaneCard = () => {
   };
   
   function chaosText(text){
-    const re = text.split("{CHAOS},");
+    const re = text.split("\nWhenever you roll {CHAOS},");
      return chaos = re[1];
     };
 
@@ -43,28 +43,11 @@ const PlaneCard = () => {
   
 if(dataCards.length > 0){
     return(
-        <>
-        <div className="dot">
-        <img src={dataCards[count].image_url} alt={"logo"} className="img_plane"/>
-            {/*
-                <li>Name:{dataCards[i].matched_names[0].name}</li>
->
-            </ul> */}
-            
+        <div className="wrapper_img">
+            <div className="dot">
+                <img src={dataCards[count].image_url} alt={"logo"} className="img_plane"/>
+            </div>
         </div>
-        
-       {(dataCards[count].matched_names[0].type === 'Phenomenon') ? <div> <button onClick = {()=> setCount(prev => prev + 1)}>Next</button></div> : null}
-            
-        <div>
-            {(count !== 0) ? <button onClick = {()=> setCount(prev => prev - 1)}>-</button> : null}
-            <span>{count}</span>
-            <button onClick = {()=> setCount(prev => prev + 1)}>+</button>
-            
-            {(sideDice === '4' ) ? <div>{chaos}</div> : null}
-            
-        </div>
-        
-        </>
     )}
 
     return (

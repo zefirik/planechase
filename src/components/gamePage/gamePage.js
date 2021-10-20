@@ -16,8 +16,12 @@ const GamePage = () => {
                                    sideDice, setSideDice, 
                                    diceRoll, setDiceRoll}}>
     <div className="game_page">
+      <div>
       <RollDice/>
+      </div>
+      <div>
       <PlaneCard/>   
+      </div>
     </div>
     </StoreContext.Provider>
   );

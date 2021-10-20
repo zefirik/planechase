@@ -20,7 +20,7 @@ import {StoreContext} from '../../store/context'
  
 
   const DiceApp = () =>{
-    const {setCount, setSideDice, diceRoll, setDiceRoll} = useContext(StoreContext);
+    const {count, setCount, setSideDice, diceRoll, setDiceRoll} = useContext(StoreContext);
     
     function rollDice() {
       const dice = [...document.querySelectorAll(".die-list")];
@@ -48,30 +48,38 @@ import {StoreContext} from '../../store/context'
     
     return(
       <>
-      <div className="dice">
-      <ol className="die-list even-roll" data-roll="3">
-        <li className="die-item" data-side="1"></li>
-        <li className="die-item" data-side="2"></li>
-        <li className="die-item" data-side="3">
-          <span className="dot">
-            <img src={mana} alt="plane_walk" width="50" height="70"/>
-          </span>
-        </li>
-        <li className="die-item" data-side="4">
-          <span className="dot">
-            <img src={chaos} alt="chaos" width="70" height="70"/>
-          </span>
-        </li>
-        <li className="die-item" data-side="5"></li>
-        <li className="die-item" data-side="6"></li>
-      </ol>
+      <div className="dice ">
+        <ol className="die-list even-roll" data-roll="3">
+          <li className="die-item" data-side="1"></li>
+          <li className="die-item" data-side="2"></li>
+          <li className="die-item" data-side="3">
+            <span className="dot_dice">
+              <img src={mana} alt="plane_walk" width="50" height="70"/>
+            </span>
+          </li>
+          <li className="die-item" data-side="4">
+            <span className="dot_dice">
+              <img src={chaos} alt="chaos" width="70" height="70"/>
+            </span>
+          </li>
+          <li className="die-item" data-side="5"></li>
+          <li className="die-item" data-side="6"></li>
+        </ol>
       </div>
-      
-      <div className="dot">
-      <span>Next Roll: +{diceRoll}Mana</span>
-        <button className="button_dice" onClick={rollDice}>Roll Dice</button>
 
-        <button className="button_dice" onClick={nextMove}>Next Move</button>
+      <div className="dot_dice">
+        <div className="text_white">Next Roll: +{diceRoll} Mana</div>
+          <button className="button_dice" onClick={rollDice}>Roll Dice</button>
+          <button className="button_dice" onClick={nextMove}>Next Turn</button>
+              <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop:'5px'
+                }}> 
+                {(count !== 0) ? <button className="button_click" onClick = {()=> setCount(prev => prev - 1)}>↶</button> : null}
+                <button className="button_click" onClick = {()=> setCount(prev => prev + 1)}>↷</button> 
+              </div>   
       </div>
   </>
     )

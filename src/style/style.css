@@ -1,15 +1,15 @@
   .game_page {
     display: flex;
+    justify-content: center;
+    align-items: center;
     background: linear-gradient(#545454, #454545, #676767);
+    height: 100vh;
   }
 
   .dice {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 2rem;
+
+    padding: 5rem;
     perspective: 600px;
-    margin: 8% 5%;
   }
   .die-list {
     display: grid;
@@ -89,8 +89,9 @@
   [data-side="6"] {
     transform: rotate3d(1, 0, 0, 180deg) translateZ(4rem);
   }
-  .dot {
+   .dot_dice {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
   }
@@ -98,23 +99,42 @@
   
   .button_dice {
     background-color: #efefef;
-    width: 250px;
+    width: 150px;
     height: 75px;
     border: none;
     color: #333;
     font-size: 1.25rem;
     font-weight: 700;
-    margin: 3% 0;
+    margin: 1% 0;
   }
   .button_dice:hover {
     cursor: pointer;
   }
+  .button_click{
+    background-color: #efefef;
+    width: 74px;
+    height: 74px;
+    border: none;
+    margin: 0 2%;
+  }
+
+  .dot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
   .img_plane {
-    /* display: flex;
-    justify-content: center; */
     transform: rotate(90deg);
-    width: 45%;
+    width: 70%;
+    margin-right:2%;
+  }
+
+  .text_white {
+    text-align: center;
+    font-size: 25px;
+    color: rgb(62, 210, 255);
+    margin: 3%;
   }
   
   @media (min-width: 900px) {
